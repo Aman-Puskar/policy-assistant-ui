@@ -10,7 +10,7 @@ const STEPS = [
   "Finishing up...",
 ];
 
-export default function LoadingStatus() {
+export default function LoadingStatus({ isFirstRequest }) {
   const [step, setStep] = useState(0);
 
   useEffect(() => {
@@ -22,11 +22,19 @@ export default function LoadingStatus() {
   }, []);
 
   return (
-    <div className="row row--assistant" role="status" aria-live="polite">
-      <div className="loading-seal" aria-hidden="true">
-        <Icon name="landmark" size={18} />
+    <div className="loading-status">
+      <div className="row row--assistant" role="status" aria-live="polite">
+        <div className="loading-seal" aria-hidden="true">
+          <Icon name="landmark" size={18} />
+        </div>
+        <p className="loading__label" key={step}>{STEPS[step]}</p>
       </div>
-      <p className="loading__label" key={step}>{STEPS[step]}</p>
+      {isFirstRequest && (
+        <p className="loading__notice">
+          The server may be waking up. Your first response can take up to 2 minutes. Please wait,
+          then try again if your question doesn’t get a response.
+        </p>
+      )}
     </div>
   );
 }
