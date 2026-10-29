@@ -3,7 +3,7 @@ import Message from "./Message";
 import LoadingStatus from "./LoadingStatus";
 import EmptyState from "./EmptyState";
 
-export default function MessageList({ messages, loading, onPick }) {
+export default function MessageList({ messages, loading, onPick, isFirstRequest }) {
   const bottomRef = useRef(null);
   const scroll = () => bottomRef.current?.scrollIntoView({ block: "end" });
 
@@ -21,7 +21,7 @@ export default function MessageList({ messages, loading, onPick }) {
             <Message key={message.id} message={message} onProgress={scroll} />
           ))
         )}
-        {loading && <LoadingStatus />}
+        {loading && <LoadingStatus isFirstRequest={isFirstRequest} />}
         <div ref={bottomRef} />
       </div>
     </main>
