@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Icon from "./Icon";
 
 const STEPS = [
   "Connecting to the assistant...",
@@ -6,7 +7,6 @@ const STEPS = [
   "Searching relevant policy information...",
   "Reviewing scheme details...",
   "Organizing the key points...",
-  "Finishing up...",
   "Finishing up...",
 ];
 
@@ -23,12 +23,8 @@ export default function LoadingStatus() {
 
   return (
     <div className="row row--assistant" role="status" aria-live="polite">
-      <div className="wave-loader" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
+      <div className="loading-seal" aria-hidden="true">
+        <Icon name="landmark" size={18} />
       </div>
       <p className="loading__label" key={step}>{STEPS[step]}</p>
     </div>

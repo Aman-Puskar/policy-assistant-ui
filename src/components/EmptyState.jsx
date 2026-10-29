@@ -17,6 +17,7 @@ export default function EmptyState({ onPick }) {
       <div className="welcome__mark">
         <Icon name="landmark" size={28} />
       </div>
+      <p className="welcome__eyebrow">PUBLIC SERVICES · POLICY GUIDE</p>
       <h2>Ask anything about government schemes</h2>
       <p>
         Health facilities, education, agriculture, housing and more. Get clear answers on
